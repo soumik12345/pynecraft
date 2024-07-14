@@ -4,19 +4,28 @@ from typing import Optional, Tuple
 import moderngl
 import pygame
 
+from .scene import Scene
+from .shader_program import ShaderProgram
+
 
 class PyneCraftEngine:
-    """The main class of the PyneCraft engine. It is responsible for creating the window, setting up the OpenGL context,
-    and running the main loop of the engine. The main loop of the engine is responsible for updating the game state,
-    rendering, and handling events.
+    """The main class of the PyneCraft engine. It is responsible for
+    creating the window, setting up the OpenGL context, and running the
+    main loop of the engine. The main loop of the engine is responsible
+    for updating the game state, rendering, and handling events.
 
     Args:
-        window_resolution (Tuple[int, int]): The resolution of the window in pixels.
-        depth_buffer_size (int): The size of the depth buffer in bits. A larger depth buffer size can improve the
-            visual quality of the 3D scene by reducing artifacts such as z-fighting, where two surfaces are so close
-            together that the depth buffer cannot distinguish which is in front. Common values for depth buffer size
-            are `16`, `24`, or `32` bits, with `24` bits being a typical choice for balancing performance and precision.
-        background_color (Optional[Tuple[int, int, int]], optional): The background color of the window.
+        window_resolution (Tuple[int, int]): The resolution of the window
+            in pixels.
+        depth_buffer_size (int): The size of the depth buffer in bits.
+            A larger depth buffer size can improve the visual quality
+            of the 3D scene by reducing artifacts such as z-fighting,
+            where two surfaces are so close together that the depth buffer
+            cannot distinguish which is in front. Common values for depth
+            buffer size are `16`, `24`, or `32` bits, with `24` bits being
+            a typical choice for balancing performance and precision.
+        background_color (Optional[Tuple[int, int, int]], optional): The background
+            color of the window.
     """
 
     def __init__(
@@ -70,8 +79,17 @@ class PyneCraftEngine:
 
         self.is_engine_running = True
 
+        self.shader_program = ShaderProgram(
+            opengl_context=self.opengl_context, shader_dir="shaders"
+        )
+        self.scene = Scene(
+            opengl_context=self.opengl_context, program=self.shader_program.program
+        )
+
     def set_opengl_attributes(self) -> None:
-        """Set the values of several attributes for the OpenGL context before creating the display surface."""
+        """Set the values of several attributes for the OpenGL context before
+        creating the display surface.
+        """
         # Set the version of the OpenGL context to 3.3
         pygame.display.gl_set_attribute(pygame.GL_CONTEXT_MAJOR_VERSION, 3)
         pygame.display.gl_set_attribute(pygame.GL_CONTEXT_MINOR_VERSION, 3)
@@ -90,6 +108,8 @@ class PyneCraftEngine:
 
     def update(self) -> None:
         """Update the game state using the core game logic."""
+        self.shader_program.update()
+        self.scene.update()
         self.delta_time = self.clock.tick()
         self.time = pygame.time.get_ticks() * 1e-3
         pygame.display.set_caption(f"PyneCraft | FPS: {self.clock.get_fps()}")
@@ -97,6 +117,7 @@ class PyneCraftEngine:
     def render(self) -> None:
         """Render the game state to the screen."""
         self.opengl_context.clear(*self.background_color)
+        self.scene.render()
         pygame.display.flip()
 
     def handle_events(self) -> None:
@@ -108,7 +129,9 @@ class PyneCraftEngine:
                 self.is_engine_running = False
 
     def run(self) -> None:
-        """Run the main loop of the engine, which updates the game state, renders the game, and handles events."""
+        """Run the main loop of the engine, which updates the game state, renders the
+        game, and handles events.
+        """
         while self.is_engine_running:
             self.update()
             self.render()
