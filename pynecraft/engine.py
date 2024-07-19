@@ -1,6 +1,7 @@
 import sys
 from typing import Optional, Tuple
 
+import glm
 import moderngl
 import pygame
 
@@ -34,7 +35,7 @@ class PyneCraftEngine:
         depth_buffer_size: int,
         background_color: Optional[Tuple[int, int, int]] = [0, 0, 0],
     ) -> None:
-        self.window_resolution = window_resolution
+        self.window_resolution = glm.vec2(window_resolution)
         self.depth_buffer_size = depth_buffer_size
         self.background_color = background_color
 

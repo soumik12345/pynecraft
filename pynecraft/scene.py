@@ -5,7 +5,7 @@ from .mesh import QuadMesh
 
 class Scene:
     """A scene that defines a collection of meshes and renders them.
-    
+
     Args:
         opengl_context (moderngl.Context): The OpenGL context.
         program (moderngl.Program): The shader program used to render the scene.

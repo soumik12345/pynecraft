@@ -6,7 +6,7 @@ from .base import BaseMesh
 
 class QuadMesh(BaseMesh):
     """A mesh representing a quad in 3D space.
-    
+
     Args:
         opengl_context (moderngl.Context): The OpenGL context.
         program (moderngl.Program): The shader program used to render the mesh.

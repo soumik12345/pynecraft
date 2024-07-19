@@ -7,7 +7,7 @@ import numpy as np
 
 class BaseMesh(ABC):
     """A base class for a mesh object that can be rendered in an OpenGL context.
-    
+
     Args:
         opengl_context (moderngl.Context): The OpenGL context.
         program (moderngl.Program): The shader program used to render the mesh.

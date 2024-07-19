@@ -6,7 +6,7 @@ import moderngl
 class ShaderProgram:
     """ShaderProgram encapsulates the handling of shaders by interacting
     directly with an OpenGL context provided by moderngl.
-    
+
     Args:
         opengl_context (moderngl.Context): The OpenGL context.
         shader_dir (str): The directory containing the vertex and fragment
