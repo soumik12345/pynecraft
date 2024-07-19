@@ -1,10 +1,10 @@
 import sys
-from typing import Optional, Tuple
 
 import glm
 import moderngl
 import pygame
 
+from .parameters import EngineParameters
 from .player import FirstPersonPlayer
 from .scene import Scene
 from .shader_program import ShaderProgram
@@ -30,15 +30,10 @@ class PyneCraftEngine:
             color of the window.
     """
 
-    def __init__(
-        self,
-        window_resolution: Tuple[int, int],
-        depth_buffer_size: int,
-        background_color: Optional[Tuple[int, int, int]] = [0, 0, 0],
-    ) -> None:
-        self.window_resolution = glm.vec2(window_resolution)
-        self.depth_buffer_size = depth_buffer_size
-        self.background_color = background_color
+    def __init__(self, engine_parameters: EngineParameters) -> None:
+        self.window_resolution = glm.vec2(engine_parameters.window_resolution)
+        self.depth_buffer_size = engine_parameters.depth_buffer_size
+        self.background_color = engine_parameters.background_color
 
         pygame.init()
         self.set_opengl_attributes()
@@ -82,7 +77,8 @@ class PyneCraftEngine:
         self.is_engine_running = True
 
         self.player = FirstPersonPlayer(
-            window_resolution=self.window_resolution, position=glm.vec3(0, 0, 1)
+            window_resolution=engine_parameters.window_resolution,
+            player_parameters=engine_parameters.player_parameters,
         )
         self.shader_program = ShaderProgram(
             opengl_context=self.opengl_context, player=self.player, shader_dir="shaders"

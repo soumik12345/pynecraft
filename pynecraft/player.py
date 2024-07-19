@@ -1,37 +1,24 @@
-import glm
+from typing import Tuple
+
 import pygame
 
 from .camera import Camera
+from .parameters import FirstPersonPlayerParameters
 
 
 class FirstPersonPlayer(Camera):
 
     def __init__(
         self,
-        window_resolution: glm.vec2,
-        position,
-        yaw: float = -90,
-        pitch: float = 0,
-        player_speed: float = 5e-3,
-        player_rotation_speed: float = 3e-3,
-        field_of_view: float = 50,
-        near_plane_of_view_frustum: float = 0.1,
-        far_plane_of_view_frustum: float = 2000,
-        pitch_max: float = 89,
-        mouse_sensitivity: float = 2e-3,
+        window_resolution: Tuple[float, float],
+        player_parameters: FirstPersonPlayerParameters,
     ) -> None:
-        self.player_speed = player_speed
-        self.player_rotation_speed = player_rotation_speed
-        self.mouse_sensitivity = mouse_sensitivity
+        self.player_speed = player_parameters.player_speed
+        self.player_rotation_speed = player_parameters.player_rotation_speed
+        self.mouse_sensitivity = player_parameters.mouse_sensitivity
         super().__init__(
-            window_resolution,
-            position,
-            yaw,
-            pitch,
-            field_of_view,
-            near_plane_of_view_frustum,
-            far_plane_of_view_frustum,
-            pitch_max,
+            window_resolution=window_resolution,
+            camera_parameters=player_parameters.camera_parameters,
         )
 
     def keyboard_control(self, delta_time: float):

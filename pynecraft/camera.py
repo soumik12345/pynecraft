@@ -1,29 +1,26 @@
 import math
+from typing import Tuple
 
 import glm
+
+from .parameters import CameraParameters
 
 
 class Camera:
 
     def __init__(
         self,
-        window_resolution: glm.vec2,
-        position: glm.vec3,
-        yaw,
-        pitch,
-        field_of_view: float = 50.0,
-        near_plane_of_view_frustum: float = 0.1,
-        far_plane_of_view_frustum: float = 2000.0,
-        pitch_max: float = 89,
+        window_resolution: Tuple[float, float],
+        camera_parameters: CameraParameters,
     ) -> None:
-        self.window_resolution = window_resolution
-        self.position = glm.vec3(position)
-        self.yaw = glm.radians(yaw)
-        self.pitch = glm.radians(pitch)
-        self.field_of_view = field_of_view
-        self.near_plane_of_view_frustum = near_plane_of_view_frustum
-        self.far_plane_of_view_frustum = far_plane_of_view_frustum
-        self.pitch_max = pitch_max
+        self.window_resolution = glm.vec2(window_resolution)
+        self.position = glm.vec3(camera_parameters.position)
+        self.yaw = glm.radians(camera_parameters.yaw)
+        self.pitch = glm.radians(camera_parameters.pitch)
+        self.field_of_view = camera_parameters.field_of_view
+        self.near_plane_of_view_frustum = camera_parameters.near_plane_of_view_frustum
+        self.far_plane_of_view_frustum = camera_parameters.far_plane_of_view_frustum
+        self.pitch_max = camera_parameters.pitch_max
 
         self.aspect_ratio = self.window_resolution.x / self.window_resolution.y
         self.vertical_field_of_view = glm.radians(self.field_of_view)
