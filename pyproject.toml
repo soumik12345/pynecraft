@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "pynecraft"
+version = "0.1.0"
+description = ""
+authors = ["Soumik Rakshit <19soumik.rakshit96@gmail.com>"]
+readme = "README.md"
+packages = [{ include = "pynecraft" }]
+
+[tool.poetry.dependencies]
+python = "^3.10"
+moderngl = "^5.10.0"
+pygame = "^2.6.0"
+pyglm = "^2.7.1"
+ruff = "^0.5.3"
+isort = "^5.13.2"
+black = "^24.4.2"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
