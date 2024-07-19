@@ -10,11 +10,10 @@ class FirstPersonPlayer(Camera):
         self,
         window_resolution: glm.vec2,
         position,
-        yaw,
-        pitch,
+        yaw: float = -90,
+        pitch: float = 0,
         player_speed: float = 5e-3,
         player_rotation_speed: float = 3e-3,
-        player_position: glm.vec3 = glm.vec3(0, 0, 1),
         field_of_view: float = 50,
         near_plane_of_view_frustum: float = 0.1,
         far_plane_of_view_frustum: float = 2000,
@@ -23,7 +22,6 @@ class FirstPersonPlayer(Camera):
     ) -> None:
         self.player_speed = player_speed
         self.player_rotation_speed = player_rotation_speed
-        self.player_position = player_position
         self.mouse_sensitivity = mouse_sensitivity
         super().__init__(
             window_resolution,

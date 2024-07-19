@@ -1,6 +1,9 @@
 import os
 
+import glm
 import moderngl
+
+from .player import FirstPersonPlayer
 
 
 class ShaderProgram:
@@ -13,9 +16,17 @@ class ShaderProgram:
             shader source code files.
     """
 
-    def __init__(self, opengl_context: moderngl.Context, shader_dir: str) -> None:
+    def __init__(
+        self,
+        opengl_context: moderngl.Context,
+        player: FirstPersonPlayer,
+        shader_dir: str,
+    ) -> None:
         self.opengl_context = opengl_context
+        self.player = player
+
         self.program = self.get_program(shader_dir=shader_dir)
+        self.set_uniforms()
 
     def get_program(self, shader_dir: str) -> moderngl.Program:
         assert os.path.isdir(
@@ -33,7 +44,8 @@ class ShaderProgram:
         )
 
     def set_uniforms(self):
-        pass
+        self.program["m_proj"].write(self.player.projection_matrix)
+        self.program["m_model"].write(glm.mat4())
 
     def update(self):
-        pass
+        self.program["m_view"].write(self.player.view_matrix)

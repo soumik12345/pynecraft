@@ -8,7 +8,7 @@ class Camera:
     def __init__(
         self,
         window_resolution: glm.vec2,
-        position,
+        position: glm.vec3,
         yaw,
         pitch,
         field_of_view: float = 50.0,

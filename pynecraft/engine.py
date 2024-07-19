@@ -5,6 +5,7 @@ import glm
 import moderngl
 import pygame
 
+from .player import FirstPersonPlayer
 from .scene import Scene
 from .shader_program import ShaderProgram
 
@@ -80,8 +81,11 @@ class PyneCraftEngine:
 
         self.is_engine_running = True
 
+        self.player = FirstPersonPlayer(
+            window_resolution=self.window_resolution, position=glm.vec3(0, 0, 1)
+        )
         self.shader_program = ShaderProgram(
-            opengl_context=self.opengl_context, shader_dir="shaders"
+            opengl_context=self.opengl_context, player=self.player, shader_dir="shaders"
         )
         self.scene = Scene(
             opengl_context=self.opengl_context, program=self.shader_program.program
@@ -109,6 +113,7 @@ class PyneCraftEngine:
 
     def update(self) -> None:
         """Update the game state using the core game logic."""
+        self.player.update(self.delta_time)
         self.shader_program.update()
         self.scene.update()
         self.delta_time = self.clock.tick()
