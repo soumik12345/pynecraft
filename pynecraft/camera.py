@@ -10,8 +10,8 @@ class Camera:
     """A camera class designed to handle the position and orientation of a
     virtual camers within a 3D game world. It manages the camera's perspective
     projection and its transformation based on player input or other in-game
-    events. 
-    
+    events.
+
     Args:
         window_resolution (Tuple[float, float]): The resolution of the window.
         camera_parameters (CameraParameters): The parameters of the camera.
@@ -32,7 +32,19 @@ class Camera:
         self.pitch_max = camera_parameters.pitch_max
 
         self.aspect_ratio = self.window_resolution.x / self.window_resolution.y
+
+        # The angle between the top and bottom of the view frustum. It determines how
+        # much of the scene is visible vertically from the camera's perspective.
+        # A larger vertical field of view makes more of the scene visible vertically,
+        # which can make the game feel more immersive.
         self.vertical_field_of_view = glm.radians(self.field_of_view)
+
+        # The horizontal field of view is derived from the vertical field of view using
+        # the aspect ratio of the game window. This ensures that the field of view remains
+        # consistent and proportionate across different screen sizes and aspect ratios. By
+        # adjusting the vertical field of view and the aspect ratio, the horizontal field
+        # of view is automatically adjusted to provide a correct and visually pleasing
+        # perspective.
         self.horizontal_field_of_view = 2 * math.atan(
             math.tan(self.vertical_field_of_view / 2) * self.aspect_ratio
         )

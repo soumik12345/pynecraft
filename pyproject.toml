@@ -16,6 +16,37 @@ isort = "^5.13.2"
 black = "^24.4.2"
 pydantic = "^2.8.2"
 fire = "^0.6.0"
+mkdocs = "^1.4.3"
+mkdocstrings = { extras = ["python"], version = "^0.22.0" }
+mkdocs-material = "^9.1.15"
+mkdocs-minify-plugin = "^0.6.4"
+mkdocs-glightbox = "^0.3.4"
+
+[tool.poetry.extras]
+core = [
+    "moderngl",
+    "pygame",
+    "pyglm",
+    "pydantic",
+    "fire",
+]
+dev = [
+    "moderngl",
+    "pygame",
+    "pyglm",
+    "pydantic",
+    "fire",
+    "ruff",
+    "isort",
+    "black",
+]
+docs = [
+    "mkdocs",
+    "mkdocstrings",
+    "mkdocs-material",
+    "mkdocs-minify-plugin",
+    "mkdocs-glightbox",
+]
 
 [build-system]
 requires = ["poetry-core"]

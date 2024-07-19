@@ -29,6 +29,12 @@ class ShaderProgram:
         self.set_uniforms()
 
     def get_program(self, shader_dir: str) -> moderngl.Program:
+        """Create a shader program from the vertex and fragment shader source
+        
+        Args:
+            shader_dir (str): The directory containing the vertex and fragment
+                shader source code files.
+        """
         assert os.path.isdir(
             shader_dir
         ), f"Shader directory '{shader_dir}' does not exist."
@@ -44,8 +50,12 @@ class ShaderProgram:
         )
 
     def set_uniforms(self):
+        """Set the uniform variables of the shader program, the values of which
+        remain constant for all vertices processed during a single draw call.
+        """
         self.program["m_proj"].write(self.player.projection_matrix)
         self.program["m_model"].write(glm.mat4())
 
     def update(self):
+        """Update the uniform variables of the shader program."""
         self.program["m_view"].write(self.player.view_matrix)

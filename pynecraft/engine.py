@@ -61,7 +61,7 @@ class PyneCraftEngine:
         self.opengl_context.gc_mode = "auto"
 
         self.clock = pygame.time.Clock()
-        self.delta_time = 0 # The time elapsed since the last frame.
+        self.delta_time = 0  # The time elapsed since the last frame.
         self.time = 0
 
         self.is_engine_running = True

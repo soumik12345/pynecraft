@@ -19,6 +19,7 @@ class CameraParameters(BaseModel):
             plane of the view frustum from the point of view.
         pitch_max (float): The maximum pitch of the camera in degrees.
     """
+
     position: Tuple[float, float, float] = (0, 0, 1)
     yaw: float = -90
     pitch: float = 0
@@ -37,6 +38,7 @@ class FirstPersonPlayerParameters(BaseModel):
         mouse_sensitivity (float): The sensitivity of the mouse control.
         camera_parameters (CameraParameters): The parameters of the camera.
     """
+
     player_speed: float = 5e-3
     player_rotation_speed: float = 3e-3
     mouse_sensitivity: float = 2e-3
@@ -60,6 +62,7 @@ class EngineParameters(BaseModel):
             color of the window.
         player_parameters (FirstPersonPlayerParameters): The parameters of the player.
     """
+
     window_resolution: Tuple[int, int]
     depth_buffer_size: int
     background_color: Tuple[int, int, int] = (0, 0, 0)

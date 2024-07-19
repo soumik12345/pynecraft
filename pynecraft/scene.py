@@ -20,4 +20,5 @@ class Scene:
         pass
 
     def render(self):
+        """Render the scene."""
         self.mesh.render()
