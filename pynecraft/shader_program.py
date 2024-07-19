@@ -30,7 +30,7 @@ class ShaderProgram:
 
     def get_program(self, shader_dir: str) -> moderngl.Program:
         """Create a shader program from the vertex and fragment shader source
-        
+
         Args:
             shader_dir (str): The directory containing the vertex and fragment
                 shader source code files.
