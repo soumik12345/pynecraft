@@ -48,6 +48,9 @@ nav:
     - Camera: 'source/camera.md'
     - Player: 'source/player.md'
     - Scene: 'source/scene.md'
+    - Mesh:
+      - Base-Mesh: 'source/mesh/base.md'
+      - Quad-Mesh: 'source/mesh/quad.md'
     - Parameters: 'source/parameters.md'
 
 repo_url: https://github.com/soumik12345/pynecraft

@@ -25,9 +25,15 @@ class BaseMesh(ABC):
 
     @abstractmethod
     def get_vertex_data(self) -> np.array:
+        """Returns the vertex data for the mesh."""
         pass
 
     def get_vertex_array_object(self) -> moderngl.VertexArray:
+        """Returns a VertexArray object for the mesh.
+        
+        Returns:
+            moderngl.VertexArray: The VertexArray object.
+        """
         vertex_data = self.get_vertex_data()
         vertex_buffer_object = self.opengl_context.buffer(vertex_data)
         vertex_array_object = self.opengl_context.vertex_array(
@@ -38,4 +44,5 @@ class BaseMesh(ABC):
         return vertex_array_object
 
     def render(self):
+        """Renders the mesh."""
         self.vertex_array_object.render()

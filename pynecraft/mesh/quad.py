@@ -21,6 +21,11 @@ class QuadMesh(BaseMesh):
         self.vertex_array_object = self.get_vertex_array_object()
 
     def get_vertex_data(self) -> np.array:
+        """Returns the vertex data for the mesh.
+        
+        Returns:
+            np.array: The vertex data.
+        """
         vertices = [
             (0.5, 0.5, 0.0),
             (-0.5, 0.5, 0.0),
