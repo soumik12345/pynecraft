@@ -17,17 +17,7 @@ class PyneCraftEngine:
     for updating the game state, rendering, and handling events.
 
     Args:
-        window_resolution (Tuple[int, int]): The resolution of the window
-            in pixels.
-        depth_buffer_size (int): The size of the depth buffer in bits.
-            A larger depth buffer size can improve the visual quality
-            of the 3D scene by reducing artifacts such as z-fighting,
-            where two surfaces are so close together that the depth buffer
-            cannot distinguish which is in front. Common values for depth
-            buffer size are `16`, `24`, or `32` bits, with `24` bits being
-            a typical choice for balancing performance and precision.
-        background_color (Optional[Tuple[int, int, int]], optional): The background
-            color of the window.
+        engine_parameters (EngineParameters): The parameters of the PyneCraft.
     """
 
     def __init__(self, engine_parameters: EngineParameters) -> None:
@@ -71,7 +61,7 @@ class PyneCraftEngine:
         self.opengl_context.gc_mode = "auto"
 
         self.clock = pygame.time.Clock()
-        self.delta_time = 0
+        self.delta_time = 0 # The time elapsed since the last frame.
         self.time = 0
 
         self.is_engine_running = True

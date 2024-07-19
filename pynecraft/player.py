@@ -7,6 +7,12 @@ from .parameters import FirstPersonPlayerParameters
 
 
 class FirstPersonPlayer(Camera):
+    """Manages the first-person player's movement and camera control within the 3D game world.
+    
+    Args:
+        window_resolution (Tuple[float, float]): The resolution of the window.
+        player_parameters (FirstPersonPlayerParameters): The parameters of the first-person player.
+    """
 
     def __init__(
         self,
@@ -22,6 +28,11 @@ class FirstPersonPlayer(Camera):
         )
 
     def keyboard_control(self, delta_time: float):
+        """Handles the keyboard input for controlling the player's movement.
+        
+        Args:
+            delta_time (float): The time elapsed since the last frame.
+        """
         key_state = pygame.key.get_pressed()
         velocity = self.player_speed * delta_time
         if key_state[pygame.K_w]:
@@ -38,6 +49,7 @@ class FirstPersonPlayer(Camera):
             self.move_down(velocity)
 
     def mouse_control(self):
+        """Handles the mouse input for controlling the player's camera orientation."""
         mouse_change_horizontal, mouse_change_vertical = pygame.mouse.get_rel()
         if mouse_change_horizontal:
             self.rotate_yaw(
@@ -49,6 +61,11 @@ class FirstPersonPlayer(Camera):
             )
 
     def update(self, delta_time: float):
+        """Update the player's movement and camera control using the core game logic.
+        
+        Args:
+            delta_time (float): The time elapsed since the last frame.
+        """
         self.keyboard_control(delta_time=delta_time)
         self.mouse_control()
         super().update()
