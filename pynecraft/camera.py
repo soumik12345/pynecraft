@@ -14,7 +14,7 @@ class Camera:
         field_of_view: float = 50.0,
         near_plane_of_view_frustum: float = 0.1,
         far_plane_of_view_frustum: float = 2000.0,
-        pitch_max=89,
+        pitch_max: float = 89,
     ) -> None:
         self.window_resolution = window_resolution
         self.position = glm.vec3(position)
@@ -61,12 +61,12 @@ class Camera:
         self.update_vectors()
         self.update_view_matrix()
 
-    def rotate_pitch(self, vertical_offself):
-        self.pitch -= vertical_offself
+    def rotate_pitch(self, vertical_offset):
+        self.pitch -= vertical_offset
         self.pitch = glm.clamp(self.pitch, -self.pitch_max, self.pitch_max)
 
-    def rotate_yaw(self, horizontal_offself):
-        self.yaw += horizontal_offself
+    def rotate_yaw(self, horizontal_offset):
+        self.yaw += horizontal_offset
 
     def move_left(self, velocity):
         self.position -= self.right * velocity
