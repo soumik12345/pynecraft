@@ -22,7 +22,7 @@ class QuadMesh(BaseMesh):
 
     def get_vertex_data(self) -> np.array:
         """Returns the vertex data for the mesh.
-        
+
         Returns:
             np.array: The vertex data.
         """

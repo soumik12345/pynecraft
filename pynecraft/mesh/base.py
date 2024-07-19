@@ -30,7 +30,7 @@ class BaseMesh(ABC):
 
     def get_vertex_array_object(self) -> moderngl.VertexArray:
         """Returns a VertexArray object for the mesh.
-        
+
         Returns:
             moderngl.VertexArray: The VertexArray object.
         """
