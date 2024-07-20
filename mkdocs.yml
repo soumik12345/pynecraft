@@ -16,6 +16,7 @@ plugins:
   - search
   - minify
   - glightbox
+  - mkdocs-video
 
 
 markdown_extensions:
@@ -45,6 +46,7 @@ nav:
   - Development-Logs:
     - Devlog-0: 'devlogs/00_window_system.md'
     - Devlog-1: 'devlogs/01_mesh_rendering.md'
+    - Devlog-2: 'devlogs/02_camera.md'
   - Source:
     - Engine: 'source/engine.md'
     - Shader-Program-Handler: 'source/shader_program.md'

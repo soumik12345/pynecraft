@@ -51,6 +51,7 @@ class BaseMesh(ABC):
             [(vertex_buffer_object, self.vbo_format, *self.attributes)],
             skip_errors=True,
         )
+
         return vertex_array_object
 
     def render(self):
