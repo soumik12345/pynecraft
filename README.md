@@ -73,8 +73,8 @@ pip install -e .[core]
 I'll be documenting my journey in the form of development logs:
 
 - [Devlog 0: A Basic Window System](https://geekyrakshit.dev/pynecraft/devlogs/00_window_system/)
-- [Devlog 1: Basic Mesh Rendering Pipeline](https://geekyrakshit.dev/pynecraft/devlogs/01_mesh_rendering.md)
-- [Devlog 2: Add a basic first-persor camera and player system](https://geekyrakshit.dev/pynecraft/devlogs/02_camera.md)
+- [Devlog 1: Basic Mesh Rendering Pipeline](https://geekyrakshit.dev/pynecraft/devlogs/01_mesh_rendering/)
+- [Devlog 2: Add a basic first-persor camera and player system](https://geekyrakshit.dev/pynecraft/devlogs/02_camera/)
 
 ## Acknowledgements
 
