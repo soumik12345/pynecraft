@@ -4,8 +4,8 @@ import numpy as np
 from .base import BaseMesh
 
 
-class QuadMesh(BaseMesh):
-    """A mesh representing a quad in 3D space.
+class TriangleMesh(BaseMesh):
+    """A mesh representing a triangle in 3D space.
 
     Args:
         opengl_context (moderngl.Context): The OpenGL context.
@@ -16,29 +16,20 @@ class QuadMesh(BaseMesh):
         self, opengl_context: moderngl.Context, program: moderngl.Program
     ) -> None:
         super().__init__(opengl_context, program)
-        
-        # This means that there are 2 sets of attributes consisting of 3 sets of
-        # floats per vertex.
         self.vbo_format = "3f 3f"
-        
-        # The attributes to be passed to the vertex shader
         self.attributes = ["in_position", "in_color"]
-        
         self.vertex_array_object = self.get_vertex_array_object()
 
-    def get_vertex_data(self) -> np.array:
+    def get_vertex_data(self):
         """Returns the vertex data for the mesh.
 
         Returns:
             np.array: The vertex data.
         """
         vertices = [
-            (0.5, 0.5, 0.0),
-            (-0.5, 0.5, 0.0),
-            (-0.5, -0.5, 0.0),
-            (0.5, 0.5, 0.0),
+            (0.0, 0.5, 0.0),
             (-0.5, -0.5, 0.0),
             (0.5, -0.5, 0.0),
         ]
-        colors = [(0, 1, 0), (1, 0, 0), (1, 1, 0), (0, 1, 0), (1, 1, 0), (0, 0, 1)]
+        colors = [(1, 0, 0), (0, 1, 0), (0, 0, 1)]
         return np.hstack([vertices, colors], dtype="float32")

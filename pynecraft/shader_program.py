@@ -53,9 +53,12 @@ class ShaderProgram:
         """Set the uniform variables of the shader program, the values of which
         remain constant for all vertices processed during a single draw call.
         """
+        # Set the projection matrix uniform variable to the vertex shader
         self.program["m_proj"].write(self.player.projection_matrix)
+        # Set the model matrix uniform variable to the vertex shader
         self.program["m_model"].write(glm.mat4())
 
     def update(self):
         """Update the uniform variables of the shader program."""
+        # Set the view matrix uniform variable to the vertex shader
         self.program["m_view"].write(self.player.view_matrix)
