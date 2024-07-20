@@ -1,0 +1,61 @@
+# mkdocs.yml
+site_name: PyneCraft
+
+theme:
+  name: material
+  features:
+    - content.code.annotate
+    - content.code.copy
+    - content.code.select
+    - content.tabs.link
+    - content.tooltips
+    - navigation.tracking
+
+plugins:
+  - mkdocstrings
+  - search
+  - minify
+  - glightbox
+  - mkdocs-video
+
+
+markdown_extensions:
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.highlight:
+      anchor_linenums: true
+      line_spans: __span
+      pygments_lang_class: true
+  - pymdownx.tabbed:
+      alternate_style: true
+  - pymdownx.details
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences
+  - admonition
+  - attr_list
+  - md_in_html
+
+extra_javascript:
+  - javascripts/mathjax.js
+  - https://polyfill.io/v3/polyfill.min.js?features=es6
+  - https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js
+
+nav:
+  - Home: 'index.md'
+  - Development-Logs:
+    - Devlog-0: 'devlogs/00_window_system.md'
+    - Devlog-1: 'devlogs/01_mesh_rendering.md'
+    - Devlog-2: 'devlogs/02_camera.md'
+  - Source:
+    - Engine: 'source/engine.md'
+    - Shader-Program-Handler: 'source/shader_program.md'
+    - Camera: 'source/camera.md'
+    - Player: 'source/player.md'
+    - Scene: 'source/scene.md'
+    - Mesh:
+      - Base-Mesh: 'source/mesh/base.md'
+      - Quad-Mesh: 'source/mesh/quad.md'
+    - Parameters: 'source/parameters.md'
+
+repo_url: https://github.com/soumik12345/pynecraft

@@ -1,0 +1,15 @@
+name: Code Checks
+on:
+  pull_request:
+    paths:
+      - .github/workflows/tests.yml
+      - pynecraft/**
+      - pyproject.toml
+
+jobs:
+  lint:
+    name: check code format
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - uses: psf/black@stable
