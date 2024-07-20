@@ -35,13 +35,13 @@ class BaseMesh(ABC):
             moderngl.VertexArray: The VertexArray object.
         """
         vertex_data = self.get_vertex_data()
-        
+
         # A vertex buffer object is an OpenGL object that stores vertex data
         # such as position, color, texture coordinates, and normals in GPU
         # memory, which is efficient for rendering because it minimizes the
         # data transfer between CPU and GPU.
         vertex_buffer_object = self.opengl_context.buffer(vertex_data)
-        
+
         # A vertext array object is an OpenGL object that stores the format of
         # the vertex data as well as the method of extracting vertex data from
         # one or more vertex buffer objects. Essentially it stores the parameters

@@ -16,14 +16,14 @@ class QuadMesh(BaseMesh):
         self, opengl_context: moderngl.Context, program: moderngl.Program
     ) -> None:
         super().__init__(opengl_context, program)
-        
+
         # This means that there are 2 sets of attributes consisting of 3 sets of
         # floats per vertex.
         self.vbo_format = "3f 3f"
-        
+
         # The attributes to be passed to the vertex shader
         self.attributes = ["in_position", "in_color"]
-        
+
         self.vertex_array_object = self.get_vertex_array_object()
 
     def get_vertex_data(self) -> np.array:
