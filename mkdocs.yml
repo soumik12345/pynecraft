@@ -44,6 +44,7 @@ nav:
   - Home: 'index.md'
   - Development-Logs:
     - Devlog-0: 'devlogs/00_window_system.md'
+    - Devlog-1: 'devlogs/01_mesh_rendering.md'
   - Source:
     - Engine: 'source/engine.md'
     - Shader-Program-Handler: 'source/shader_program.md'
